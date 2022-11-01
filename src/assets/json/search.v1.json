@@ -1,0 +1,18 @@
+{
+    "formSchema": {
+        "inline": true,
+        "labelWidth": "auto"
+    },
+    "cellSchema": [
+        {
+            "field": "truename",
+            "uiSchema": {
+                "clearable": true,
+                "placeholder": "请输入姓名"
+            },
+            "mold": "text",
+            "componentName": "mg-input",
+            "value": ""
+        }
+    ]
+}

@@ -1,0 +1,142 @@
+{
+    "keyname": "id",
+    "uiSchema": {
+        "sortProp": "id",
+        "sortOrder": "ascending",
+        "stripe": true,
+        "isPage": true,
+        "isChoice": true,
+        "isIndex": true,
+        "size": "small",
+        "handleFixed": "right"
+    },
+    "controller": [
+        {
+            "mode": "excel",
+            "type": "primary",
+            "icon": "el-icon-eleme",
+            "useRow": true,
+            "useAll": false,
+            "label": "导出"
+        },
+        {
+            "mode": "back",
+            "type": "danger",
+            "icon": "el-icon-eleme",
+            "useRow": true,
+            "useAll": false,
+            "label": "退回"
+        },
+        {
+            "mode": "check",
+            "type": "primary",
+            "icon": "el-icon-eleme",
+            "useRow": true,
+            "useAll": true,
+            "label": "审核"
+        }
+    ],
+    "columnSchema": [
+        {
+            "isSort": true,
+            "prop": "name",
+            "formatLink": "apply-view?id=id",
+            "mold": "link",
+            "minWidth": "160",
+            "label": "项目名称",
+            "align": "left"
+        },
+        {
+            "isSort": true,
+            "prop": "projtotalfunding",
+            "width": "160",
+            "mold": "default",
+            "minWidth": "160",
+            "label": "经费预算（万元）",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "projno",
+            "width": "105",
+            "mold": "default",
+            "minWidth": "105",
+            "label": "项目编号",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "formatDate": "yyyy-MM-dd",
+            "prop": "starttime",
+            "width": "110",
+            "mold": "default",
+            "minWidth": "110",
+            "label": "开始时间",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "formatDate": "yyyy-MM-dd",
+            "prop": "endtime",
+            "width": "110",
+            "mold": "default",
+            "minWidth": "110",
+            "label": "结束时间",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "projsourcesname",
+            "width": "105",
+            "mold": "default",
+            "minWidth": "105",
+            "label": "项目来源",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "cooperatetypename",
+            "width": "105",
+            "mold": "default",
+            "minWidth": "105",
+            "label": "合作形式",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "projlevelname",
+            "width": "105",
+            "mold": "default",
+            "minWidth": "105",
+            "label": "项目类型",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "projtypename",
+            "width": "105",
+            "mold": "default",
+            "minWidth": "105",
+            "label": "研究类别",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "useridname",
+            "width": "100",
+            "mold": "default",
+            "minWidth": "100",
+            "label": "负责人",
+            "align": "center"
+        },
+        {
+            "isSort": true,
+            "prop": "checkresultname",
+            "width": "120",
+            "mold": "default",
+            "minWidth": "120",
+            "label": "审核结果",
+            "align": "center"
+        }
+    ]
+}
