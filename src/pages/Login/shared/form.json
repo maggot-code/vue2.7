@@ -1,0 +1,39 @@
+{
+    "formSchema": {
+        "labelWidth": "auto"
+    },
+    "cellSchema": [
+        {
+            "field": "username",
+            "uiSchema": {
+                "clearable": true,
+                "placeholder": "请输入用户名"
+            },
+            "ruleSchema": [
+                {
+                    "message": "请填写用户名",
+                    "required": true
+                }
+            ],
+            "mold": "text",
+            "componentName": "mg-input",
+            "value": ""
+        },
+        {
+            "field": "password",
+            "uiSchema": {
+                "clearable": true,
+                "placeholder": "请输入密码"
+            },
+            "ruleSchema": [
+                {
+                    "message": "请填写密码",
+                    "required": true
+                }
+            ],
+            "mold": "password",
+            "componentName": "mg-input",
+            "value": ""
+        }
+    ]
+}

@@ -1,9 +1,9 @@
 /*
- * @FilePath: \ytxd-ui\src\server\common.js
+ * @FilePath: /vue2.7/src/server/common.js
  * @Author: maggot-code
  * @Date: 2022-11-01 13:35:06
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-01 14:09:42
+ * @LastEditTime: 2022-11-03 01:14:38
  * @Description: 
  */
 import { defineService } from "@/service";
@@ -13,7 +13,7 @@ import ServerCrash from "@/middleware/serverCrash.service";
 import NotFound from "@/middleware/notFound.service";
 
 const define = axios.create({
-    baseURL: "",
+    baseURL: import.meta.env.BASE_URL,
     timeout: 0,
     withCredentials: false,
     headers: {}

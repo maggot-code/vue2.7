@@ -1,15 +1,19 @@
 <!--
- * @FilePath: \vue2.7\src\pages\Login\login.vue
+ * @FilePath: /vue2.7/src/pages/Login/login.vue
  * @Author: maggot-code
  * @Date: 2022-11-02 09:25:31
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 17:47:38
+ * @LastEditTime: 2022-11-03 01:25:55
  * @Description: 
 -->
 <script setup>
+import FromStruct from "./shared/form";
+
 import { useUserStore } from "@/store/useUser";
+import { useGlobStore } from "@/store/useGlob";
 import { defineForm, defineFormAction } from "@/template/form";
 
+const glob = useGlobStore();
 const user = useUserStore();
 
 const form = defineForm();
@@ -20,53 +24,13 @@ formAction.bindSource((factor) => {
     console.log(factor);
 });
 onMounted(() => {
-    form.schema.setup({
-        formSchema: {
-            labelWidth: "auto"
-        },
-        cellSchema: [
-            {
-                field: "username",
-                uiSchema: {
-                    clearable: true,
-                    placeholder: "请输入用户名",
-                },
-                ruleSchema: [
-                    {
-                        message: "请填写用户名",
-                        required: true
-                    }
-                ],
-                mold: "text",
-                componentName: "mg-input",
-                value: ""
-            },
-            {
-                field: "password",
-                uiSchema: {
-                    clearable: true,
-                    placeholder: "请输入密码",
-                },
-                ruleSchema: [
-                    {
-                        message: "请填写密码",
-                        required: true
-                    }
-                ],
-                mold: "password",
-                componentName: "mg-input",
-                value: ""
-            }
-        ]
-    });
-
-    user.setupName("aa");
+    form.schema.setup(FromStruct);
 });
 </script>
 
 <template>
     <div class="ytxd-login">
-        <div class="ytxd-login-head">{{ user.fullname }}</div>
+        <div class="ytxd-login-head"></div>
         <div class="ytxd-login-body">
             <mg-form class="ytxd-login-body-form" ref="formRefs" :job="formJob" :schema="{ formSchema, cellSchema }"
                 @monitor-value="formAction.monitorValue">
@@ -74,7 +38,8 @@ onMounted(() => {
             <div class="ytxd-login-body-control">
                 <p>验证码</p>
                 <p>描述</p>
-                <p>记住密码 | 重置密码</p>
+                <p>重制密码</p>
+                <el-checkbox :value="glob.recordPassword" @change="glob.toggleRecordPassword">记住密码</el-checkbox>
                 <el-button icon="el-icon-search" @click="formAction.submit">登录</el-button>
             </div>
         </div>

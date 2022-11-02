@@ -1,9 +1,9 @@
 /*
- * @FilePath: \vue2.7\src\main.js
+ * @FilePath: /vue2.7/src/main.js
  * @Author: maggot-code
  * @Date: 2022-10-31 11:39:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 17:45:13
+ * @LastEditTime: 2022-11-03 01:22:45
  * @Description: 
  */
 import Vue from 'vue';
