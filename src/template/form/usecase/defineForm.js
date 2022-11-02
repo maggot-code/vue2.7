@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/template/form/usecase/defineForm.js
+ * @FilePath: \vue2.7\src\template\form\usecase\defineForm.js
  * @Author: maggot-code
  * @Date: 2022-10-31 16:03:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 02:11:50
+ * @LastEditTime: 2022-11-02 10:08:58
  * @Description: 
  */
 import { toObject } from "@/utils/trans";
@@ -28,6 +28,21 @@ export function defineForm() {
         form.data.setup(factor);
         unwatch();
     });
+
+    async function checkFormData() {
+        if (unref(form.element.unusable)) return;
+
+        const { validate, data } = unref(form.element.refs).formOutput();
+
+        const state = await validate().catch((error) => {
+            console.log(error);
+            return Promise.resolve(false);
+        });
+
+        if (state) form.data.setup(data);
+
+        return state;
+    }
 
     async function setupFormData() {
         if (unref(form.element.unusable)) return;
@@ -55,6 +70,7 @@ export function defineForm() {
         form,
         job,
         schema,
+        checkFormData,
         setupFormData,
         resetFormData,
     }

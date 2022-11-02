@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /vue2.7/src/template/curd/view/curd.vue
+ * @FilePath: \vue2.7\src\template\curd\view\curd.vue
  * @Author: maggot-code
  * @Date: 2022-11-01 16:33:57
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 02:15:04
+ * @LastEditTime: 2022-11-02 10:36:19
  * @Description: 
 -->
 <script setup>

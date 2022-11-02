@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/template/form/usecase/defineAction.js
+ * @FilePath: \vue2.7\src\template\form\usecase\defineAction.js
  * @Author: maggot-code
  * @Date: 2022-11-02 01:36:50
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 01:49:08
+ * @LastEditTime: 2022-11-02 10:10:44
  * @Description: 
  */
 import { createEventHook } from "@vueuse/core";
@@ -11,13 +11,19 @@ import { createEventHook } from "@vueuse/core";
 export function defineFormAction(form) {
     const source = createEventHook();
 
-    async function submit() {
+    async function save() {
         await form.setupFormData();
-        source.trigger(unref(form.form.source));
+
+        source.trigger(unref(form.form.factor));
+    }
+    async function submit() {
+        const state = await form.checkFormData();
+
+        if (state) source.trigger(unref(form.form.factor));
     }
     async function reset() {
         await form.resetFormData();
-        source.trigger(unref(form.form.source));
+        source.trigger(unref(form.form.factor));
     }
     function monitorValue(formItem) {
         // console.log(formItem);
@@ -28,6 +34,7 @@ export function defineFormAction(form) {
     });
 
     return {
+        save,
         submit,
         reset,
         monitorValue,

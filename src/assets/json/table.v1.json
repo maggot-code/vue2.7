@@ -16,7 +16,7 @@
             "type": "primary",
             "icon": "el-icon-eleme",
             "useRow": true,
-            "useAll": false,
+            "useAll": true,
             "label": "导出"
         },
         {
@@ -31,7 +31,7 @@
             "mode": "check",
             "type": "primary",
             "icon": "el-icon-eleme",
-            "useRow": true,
+            "useRow": false,
             "useAll": true,
             "label": "审核"
         }
@@ -40,7 +40,7 @@
         {
             "isSort": true,
             "prop": "name",
-            "formatLink": "apply-view?id=id",
+            "formatLink": "apply-view?num=projno&id=1&t=starttime",
             "mold": "link",
             "minWidth": "160",
             "label": "项目名称",
