@@ -1,17 +1,14 @@
 /*
- * @FilePath: \ytxd-ui\src\utils\factory.js
+ * @FilePath: /vue2.7/src/utils/factory.js
  * @Author: maggot-code
  * @Date: 2022-10-31 15:32:51
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-01 17:53:54
+ * @LastEditTime: 2022-11-04 01:44:36
  * @Description: 
  */
-import { createEventHook } from "@vueuse/core";
 import { uuid } from "@/utils/uuid";
-
-function toBoolean(value, defaultValue = false) {
-    return isBoolean(value) ? value : defaultValue;
-}
+import { createEventHook } from "@vueuse/core";
+import { toBoolean } from "@/utils/trans";
 
 export function defineWatchRef() {
     const value = ref(uuid());
@@ -51,8 +48,11 @@ export function defineArrayRef() {
 
         source.value = value;
     }
+    function add(value) {
+        setup([...unref(data), value]);
+    }
 
-    return { data, len, usable, unusable, setup };
+    return { data, len, usable, unusable, setup, add };
 }
 
 export function defineStateRef(value) {
