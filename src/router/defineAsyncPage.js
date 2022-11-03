@@ -1,12 +1,16 @@
 /*
- * @FilePath: \ytxd-ui\src\shared\router\defineAsyncPage.js
+ * @FilePath: \vue2.7\src\router\defineAsyncPage.js
  * @Author: maggot-code
- * @Date: 2022-10-31 15:13:30
+ * @Date: 2022-11-03 12:32:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-10-31 15:13:46
+ * @LastEditTime: 2022-11-03 13:37:36
  * @Description: 
  */
-export function defineAsyncPage() {
+import { definePage } from "./definePage";
+
+export function defineAsyncPage(route) {
+    console.log(route);
+    console.log(definePage);
     return {}
 }
 

@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/server/common.js
+ * @FilePath: \vue2.7\src\server\common.js
  * @Author: maggot-code
  * @Date: 2022-11-01 13:35:06
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-03 01:14:38
+ * @LastEditTime: 2022-11-03 11:12:18
  * @Description: 
  */
 import { defineService } from "@/service";

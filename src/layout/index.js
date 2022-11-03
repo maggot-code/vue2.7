@@ -1,9 +1,9 @@
 /*
- * @FilePath: \vue2.7\src\pages\index.js
+ * @FilePath: \vue2.7\src\layout\index.js
  * @Author: maggot-code
- * @Date: 2022-10-31 14:55:46
+ * @Date: 2022-11-03 09:31:24
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-03 12:33:38
+ * @LastEditTime: 2022-11-03 13:28:18
  * @Description: 
  */
 import { definePage } from "@/router";

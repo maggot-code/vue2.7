@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /vue2.7/src/pages/Login/login.vue
+ * @FilePath: \vue2.7\src\pages\Login\login.vue
  * @Author: maggot-code
  * @Date: 2022-11-02 09:25:31
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-03 01:25:55
+ * @LastEditTime: 2022-11-03 09:17:53
  * @Description: 
 -->
 <script setup>
@@ -64,14 +64,18 @@ onMounted(() => {
         flex-direction: column;
         align-self: flex-end;
         width: 320px;
-        height: 320px;
+        height: 240px;
+
+        &-form,
+        &-control {
+            height: 50%;
+        }
 
         &-control {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-end;
-            height: 100%;
         }
     }
 }

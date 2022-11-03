@@ -1,19 +1,21 @@
 /*
- * @FilePath: \ytxd-ui\src\router\definePage.js
+ * @FilePath: \vue2.7\src\router\definePage.js
  * @Author: maggot-code
- * @Date: 2022-10-31 14:57:43
+ * @Date: 2022-11-03 12:32:00
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-01 09:50:19
+ * @LastEditTime: 2022-11-03 13:37:04
  * @Description: 
  */
-import uuid from "@/utils/uuid";
+import { uuid } from "@/utils/uuid";
+import { toBoolean } from "@/utils/trans";
+import { isStringEmpty } from "@/utils/empty";
 
-export function definePage(props, toPage) {
-    const bind = { name: uuid() };
+export function definePage() {
+    const name = uuid();
 
-    if (isFunction(toPage)) bind.component = toPage;
-
-    return Object.assign({}, props, bind);
+    return {
+        name
+    }
 }
 
 export default definePage;

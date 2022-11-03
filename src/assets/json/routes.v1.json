@@ -1,0 +1,38 @@
+[
+    {
+        "mode": "directory",
+        "pid": null,
+        "id": 100,
+        "address": "/review",
+        "title": "专家评审",
+        "useRedirect": true,
+        "menu": true
+    },
+    {
+        "mode": "template",
+        "template": "curd",
+        "pid": 100,
+        "id": 101,
+        "address": "/check",
+        "title": "专家审核",
+        "menu": true
+    },
+    {
+        "mode": "template",
+        "template": "curd",
+        "pid": 100,
+        "id": 102,
+        "address": "/record",
+        "title": "评审记录",
+        "menu": true
+    },
+    {
+        "mode": "template",
+        "template": "curd",
+        "pid": null,
+        "id": 200,
+        "address": "/log",
+        "title": "日志",
+        "menu": true
+    }
+]
