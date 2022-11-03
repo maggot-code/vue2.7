@@ -14,7 +14,7 @@
         "dayjs": "^1.11.6",
         "element-ui": "^2.15.10",
         "lodash-es": "^4.17.21",
-        "maggot-form": "^1.4.2",
+        "maggot-form": "^1.4.7",
         "maggot-table": "^1.2.3",
         "normalize.css": "^8.0.1",
         "pinia": "^2.0.23",
