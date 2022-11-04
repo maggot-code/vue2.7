@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/template/table/usecase/defineTable.js
+ * @FilePath: \vue2.7\src\template\table\usecase\defineTable.js
  * @Author: maggot-code
  * @Date: 2022-11-01 18:09:07
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 01:26:08
+ * @LastEditTime: 2022-11-04 13:58:11
  * @Description: 
  */
 import { toOrder } from "../shared/trans";
@@ -52,6 +52,7 @@ export function defineTable() {
         uiSchema: schema.uiSchema,
         columnSchema: schema.columnSchema,
         hasChoice: source.choice.usable,
+        notChoice: source.choice.unusable,
         tableChoice: source.choiceSource,
         tableData: source.dataSource,
         total: source.total,

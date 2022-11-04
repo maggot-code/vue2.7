@@ -3,10 +3,11 @@
  * @Author: maggot-code
  * @Date: 2022-11-03 00:16:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 12:37:56
+ * @LastEditTime: 2022-11-04 12:48:45
  * @Description: 
  */
 import { defineStore } from 'pinia';
+import { isStringEmpty } from "@/utils/empty";
 import { useGlobStore } from "./useGlob";
 
 export const Namespace = 'useUser';
@@ -18,13 +19,19 @@ export const useUser = defineStore(Namespace, {
         }
     },
 
-    getters: {},
+    getters: {
+        tokenUnusable() {
+            return isStringEmpty(this.token);
+        },
+        tokenUsable() {
+            return !this.tokenUnusable;
+        }
+    },
 
     actions: {
         async login(server, options) {
-            console.log(server);
-            const response = await server.toExecute(options);
-            console.log(response);
+            const { data } = await server.toExecute(options);
+            this.token = data.token;
         }
     },
 

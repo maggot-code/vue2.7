@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /vue2.7/src/components/DialogContainer/index.vue
+ * @FilePath: \vue2.7\src\components\DialogContainer\index.vue
  * @Author: maggot-code
  * @Date: 2022-10-31 15:18:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 01:57:51
+ * @LastEditTime: 2022-11-04 14:59:33
  * @Description: 
 -->
 <script>
@@ -26,10 +26,8 @@ const className = computed(() => {
         <slot></slot>
         <template v-for="(entity) in source">
             <el-dialog :key="entity.name" v-bind="entity.toBind()" @close="entity.release">
-                <div slot="title">
-                    <el-button @click="entity.release">关闭</el-button>
-                </div>
-                <components :is="entity.component"></components>
+                <div slot="title"></div>
+                <components :is="entity.component" :entityDialog="entity" :ctx="entity.context"></components>
             </el-dialog>
         </template>
     </div>

@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/template/table/usecase/defineAction.js
+ * @FilePath: \vue2.7\src\template\table\usecase\defineAction.js
  * @Author: maggot-code
  * @Date: 2022-11-01 23:55:29
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 01:56:20
+ * @LastEditTime: 2022-11-04 13:55:43
  * @Description: 
  */
 import { createEventHook } from "@vueuse/core";
@@ -19,7 +19,6 @@ export function defineTableAction(table) {
         choice.trigger(unref(table.choiceKeys));
     }
     function handleRow(props) {
-        // table.hasChoice 用于在点击全局操作时候，判断是否有选中的数据
         control.trigger(props);
     }
     function cellEvent(props) {

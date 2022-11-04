@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-10-31 16:30:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 12:34:02
+ * @LastEditTime: 2022-11-04 13:03:14
  * @Description: 
  */
 import { useMiddleware } from "./useMiddleware";
@@ -38,8 +38,8 @@ export function defineService(define) {
 
         const props = computed(() => {
             return {
-                url: isStringEmpty(url) ? "/" : url,
-                method: isStringEmpty(method) ? "GET" : method.toUpperCase(),
+                url: isNil(url) || isStringEmpty(url) ? "/" : url,
+                method: isNil(method) || isStringEmpty(method) ? "GET" : method.toUpperCase(),
                 params: isObject(unref(options.params)) ? unref(options.params) : {},
                 data: isObject(unref(options.data)) ? unref(options.data) : {}
             };
