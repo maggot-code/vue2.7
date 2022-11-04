@@ -3,16 +3,16 @@
  * @Author: maggot-code
  * @Date: 2022-11-04 15:50:06
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 16:01:12
+ * @LastEditTime: 2022-11-04 17:56:25
  * @Description: 
 -->
 <script setup>
 import {
     defineForm,
-    defineFormAction,
     defineFormFile,
     defineFormRemote
 } from "@/template/form";
+import { defineSendFormData } from "@/service";
 
 import { isStringEmpty } from "@/utils/empty";
 import { useCommonServer } from "@/server/common";
@@ -41,7 +41,6 @@ const params = computed(() => {
 });
 
 const form = defineForm();
-const formAction = defineFormAction(form);
 const server = useCommonServer();
 const file = defineFormFile(server);
 const remote = defineFormRemote(server);
@@ -49,15 +48,40 @@ const remote = defineFormRemote(server);
 const { formRefs, formJob, formSchema, cellSchema } = form;
 
 const configServer = server.get(unref(attrs).service.uri);
+const controller = computed(() => unref(configServer.data)?.data?.controller ?? []);
 
-formAction.bindSource((factor) => {
-    console.log(factor);
-});
+const toHandler = {
+    save: toSave,
+    submit: toSubmit,
+};
+function toSend(attrs) {
+    const factor = { params: attrs.service.props, data: defineSendFormData(unref(form.form.factor)) };
+    return server.send(attrs.service.uri, attrs.service.method, factor).toExecute().finally(props.entityDialog.toCall);
+}
+
+function handlerControl(control) {
+    const { attrs, mode } = control;
+    const handler = toHandler[mode];
+    handler(attrs);
+}
+async function toSave(attrs) {
+    await form.setupFormData();
+
+    const response = await toSend(attrs);
+    console.log(response);
+}
+async function toSubmit(attrs) {
+    const state = await form.checkFormData();
+    if (!state) return;
+
+    const response = await toSend(attrs);
+    console.log(response);
+}
 
 onMounted(async () => {
     if (unref(keyword).usable) {
         const response = await configServer.toExecute({ params: unref(params) });
-        form.setupData(response.data.data);
+        form.schema.setup(response.data.data);
     } else {
         const response = await configServer.toExecute();
         form.schema.setup(response.data.data);
@@ -68,14 +92,19 @@ onMounted(async () => {
 <template>
     <div class="inspect-view">
         <div class="inspect-view-body">
-            <mg-form ref="formRefs" :job="formJob" :schema="{ formSchema, cellSchema }" :upload="file" :remote="remote"
-                @monitor-value="formAction.monitorValue">
+            <mg-form ref="formRefs" :job="formJob" :schema="{ formSchema, cellSchema }" :upload="file" :remote="remote">
             </mg-form>
         </div>
         <div class="inspect-view-foot">
-            <el-button size="mini" icon="el-icon-message" @click="formAction.submit">送审</el-button>
-            <el-button size="mini" icon="el-icon-receiving" @click="formAction.save">保存</el-button>
-            <el-button size="mini" icon="el-icon-close" @click="props.entityDialog.release">关闭</el-button>
+            <template v-for="(control) in controller">
+                <el-button :key="control.mode" size="mini" :icon="control.icon" :type="control.type"
+                    @click="handlerControl(control)">
+                    {{ control.label }}
+                </el-button>
+            </template>
+            <el-button size="mini" icon="el-icon-close" type="danger" @click="props.entityDialog.release">
+                关闭
+            </el-button>
         </div>
     </div>
 </template>

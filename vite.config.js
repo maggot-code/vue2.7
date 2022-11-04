@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-10-31 11:39:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 13:02:33
+ * @LastEditTime: 2022-11-04 18:21:26
  * @Description: 
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';

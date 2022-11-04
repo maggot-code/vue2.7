@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-11-04 00:21:26
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 14:50:34
+ * @LastEditTime: 2022-11-04 16:50:18
  * @Description: 
  */
 import { UnknowView } from "@/template/unknow";
@@ -41,6 +41,7 @@ export function DialogEntity(options) {
         name,
         visible,
         toBind,
+        toCall: event.trigger,
         toNotice: event.on,
     }
 }

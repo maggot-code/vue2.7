@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-11-01 16:41:27
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 16:03:00
+ * @LastEditTime: 2022-11-04 16:18:18
  * @Description: 
  */
 function defineSend(server) {
@@ -11,8 +11,9 @@ function defineSend(server) {
         const response = await server
             .send(props.address, props.lib.method, { params: props.lib })
             .toExecute();
-
-        return response?.data ?? [];
+        if (Array.isArray(response?.data)) return response.data;
+        if (Array.isArray(response.data?.data)) return response.data.data;
+        return [];
     }
     return request;
 }
