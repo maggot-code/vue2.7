@@ -1,9 +1,9 @@
 /*
- * @FilePath: \ytxd-ui\vite.config.js
+ * @FilePath: \vue2.7\vite.config.js
  * @Author: maggot-code
  * @Date: 2022-10-31 11:39:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-01 16:24:44
+ * @LastEditTime: 2022-11-04 11:31:43
  * @Description: 
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
@@ -38,6 +38,11 @@ export default defineConfig({
             overlay: false
         },
         proxy: {
+            "/vue": {
+                target: 'http://192.1.1.176:8080/',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/vue/, '/vue')
+            },
             '/api': {
                 target: 'http://192.1.1.6:8300/',
                 changeOrigin: true,

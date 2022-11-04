@@ -3,12 +3,13 @@
  * @Author: maggot-code
  * @Date: 2022-11-02 09:25:31
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-03 09:17:53
+ * @LastEditTime: 2022-11-04 12:19:48
  * @Description: 
 -->
 <script setup>
 import FromStruct from "./shared/form";
 
+import { useCommonServer } from "@/server/common";
 import { useUserStore } from "@/store/useUser";
 import { useGlobStore } from "@/store/useGlob";
 import { defineForm, defineFormAction } from "@/template/form";
@@ -20,8 +21,12 @@ const form = defineForm();
 const formAction = defineFormAction(form);
 const { formRefs, formJob, formSchema, cellSchema } = form;
 
+const server = useCommonServer();
+const toLogin = server.post("/vue/signin_vue", { data: form.form.factor });
+
 formAction.bindSource((factor) => {
     console.log(factor);
+    toLogin.toExecute();
 });
 onMounted(() => {
     form.schema.setup(FromStruct);

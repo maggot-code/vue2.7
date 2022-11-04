@@ -1,9 +1,9 @@
 /*
- * @FilePath: \ytxd-ui\src\service\defineService.js
+ * @FilePath: \vue2.7\src\service\defineService.js
  * @Author: maggot-code
  * @Date: 2022-10-31 16:30:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-01 13:29:08
+ * @LastEditTime: 2022-11-04 12:18:20
  * @Description: 
  */
 import { useMiddleware } from "./useMiddleware";
@@ -39,8 +39,8 @@ export function defineService(define) {
         const props = {
             url: isStringEmpty(url) ? "/" : url,
             method: isStringEmpty(method) ? "GET" : method.toUpperCase(),
-            params: isObject(options.params) ? options.params : {},
-            data: isObject(options.data) ? options.data : {}
+            params: isObject(unref(options.params)) ? unref(options.params) : {},
+            data: isObject(unref(options.data)) ? unref(options.data) : {}
         };
 
         return defineFetchRef(define, config, props);

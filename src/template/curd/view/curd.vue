@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-11-01 16:33:57
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-02 10:36:19
+ * @LastEditTime: 2022-11-04 11:30:58
  * @Description: 
 -->
 <script setup>
@@ -11,11 +11,13 @@ import MockData from "@/assets/json/data.v1";
 import TableData from "@/assets/json/table.v1";
 import SearchData from "@/assets/json/search.v1";
 
+import { useCommonServer } from "@/server/common";
 import { defineTable, defineTableAction } from "@/template/table";
 import { defineForm, defineFormAction } from "@/template/form";
 import { useFormFile } from "../usecase/useFormFile";
 import { useFormRemote } from "../usecase/useFormRemote";
 
+const server = useCommonServer();
 const table = defineTable();
 const form = defineForm();
 const tableAction = defineTableAction(table);
@@ -34,6 +36,8 @@ const factor = computed(() => {
 const { tableChoice, tableData, total, tableRefs, defaultPageSize, resetCurrentPage, resizeTable, allusable, allController, rowController, uiSchema, columnSchema } = table;
 const { formRefs, formJob, formSchema, cellSchema } = form;
 
+const aa = server.get("/vue/Achievements/AM_Papers/MyList");
+
 // 替换成服务调用
 function toSend() {
     console.log(unref(factor));
@@ -50,10 +54,13 @@ tableAction.bindEvent((event) => {
 });
 tableAction.bindSource(toSend);
 formAction.bindSource(toSend);
-onMounted(() => {
+onMounted(async () => {
     form.schema.setup(SearchData);
     table.setup(TableData);
     table.setupData(MockData);
+
+    const response = await aa.toExecute();
+    console.log(response);
 });
 </script>
 

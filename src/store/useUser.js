@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-11-03 00:16:46
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-03 11:13:40
+ * @LastEditTime: 2022-11-04 12:16:08
  * @Description: 
  */
 import { defineStore } from 'pinia';
@@ -20,7 +20,11 @@ export const useUser = defineStore(Namespace, {
 
     getters: {},
 
-    actions: {},
+    actions: {
+        // async login(loginServer) {
+        //     await loginServer
+        // }
+    },
 
     persist: {
         key: Namespace,

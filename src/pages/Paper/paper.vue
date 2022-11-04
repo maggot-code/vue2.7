@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /vue2.7/src/pages/Paper/paper.vue
+ * @FilePath: \vue2.7\src\pages\Paper\paper.vue
  * @Author: maggot-code
  * @Date: 2022-10-31 15:12:14
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 00:39:00
+ * @LastEditTime: 2022-11-04 11:24:56
  * @Description: 
 -->
 <script setup>
@@ -18,14 +18,15 @@ function open() {
 </script>
 
 <template>
-    <div class="box">
+    <!-- <div class="box">
         <div class="box-button">
             <el-button type="primary" @click="open">打开</el-button>
         </div>
         <div class="box-main">
             <curd-view></curd-view>
         </div>
-    </div>
+    </div> -->
+    <curd-view></curd-view>
 </template>
 
 <style scoped lang='scss'>
