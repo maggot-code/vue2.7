@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-11-02 09:25:31
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 12:19:48
+ * @LastEditTime: 2022-11-04 12:36:55
  * @Description: 
 -->
 <script setup>
@@ -22,11 +22,10 @@ const formAction = defineFormAction(form);
 const { formRefs, formJob, formSchema, cellSchema } = form;
 
 const server = useCommonServer();
-const toLogin = server.post("/vue/signin_vue", { data: form.form.factor });
+const toLogin = server.post("/vue/signin_vue");
 
 formAction.bindSource((factor) => {
-    console.log(factor);
-    toLogin.toExecute();
+    user.login(toLogin, { params: factor });
 });
 onMounted(() => {
     form.schema.setup(FromStruct);

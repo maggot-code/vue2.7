@@ -17,10 +17,10 @@
             ],
             "mold": "text",
             "componentName": "mg-input",
-            "value": ""
+            "value": "admin"
         },
         {
-            "field": "password",
+            "field": "userpwd",
             "uiSchema": {
                 "clearable": true,
                 "placeholder": "请输入密码"
@@ -33,7 +33,7 @@
             ],
             "mold": "password",
             "componentName": "mg-input",
-            "value": ""
+            "value": "admin@1234"
         }
     ]
 }

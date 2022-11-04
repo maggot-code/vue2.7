@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/utils/factory.js
+ * @FilePath: \vue2.7\src\utils\factory.js
  * @Author: maggot-code
  * @Date: 2022-10-31 15:32:51
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 01:44:36
+ * @LastEditTime: 2022-11-04 12:40:29
  * @Description: 
  */
 import { uuid } from "@/utils/uuid";
@@ -117,13 +117,16 @@ export function defineFetchRef(service, config, props) {
     const fetching = computed(() => unref(fetch.state));
     const finished = computed(() => unref(finish.state));
 
-    function toExecute() {
+    function toExecute(spareProps) {
         load.toEnable();
         fetch.toEnable();
         finish.toDisable();
+
+        const factor = Object.assign({}, unref(props), spareProps);
         const options = Object.assign({}, {
             signal: controller.signal,
-        }, props);
+        }, factor);
+
         return new Promise((resolve, reject) => {
             service(options).then((response) => {
                 source.setup(response.data);

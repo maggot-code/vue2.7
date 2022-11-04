@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-10-31 16:30:18
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 12:18:20
+ * @LastEditTime: 2022-11-04 12:34:02
  * @Description: 
  */
 import { useMiddleware } from "./useMiddleware";
@@ -36,22 +36,29 @@ export function defineService(define) {
             controller: new AbortController()
         };
 
-        const props = {
-            url: isStringEmpty(url) ? "/" : url,
-            method: isStringEmpty(method) ? "GET" : method.toUpperCase(),
-            params: isObject(unref(options.params)) ? unref(options.params) : {},
-            data: isObject(unref(options.data)) ? unref(options.data) : {}
-        };
+        const props = computed(() => {
+            return {
+                url: isStringEmpty(url) ? "/" : url,
+                method: isStringEmpty(method) ? "GET" : method.toUpperCase(),
+                params: isObject(unref(options.params)) ? unref(options.params) : {},
+                data: isObject(unref(options.data)) ? unref(options.data) : {}
+            };
+        });
 
         return defineFetchRef(define, config, props);
     }
-    function get(url, params) {
+    function get(url, options = {}) {
+        const params = options?.params ?? {};
         return send(url, 'GET', { params });
     }
-    function post(url, { params, data }) {
+    function post(url, options = {}) {
+        const params = options?.params ?? {};
+        const data = options?.data ?? {};
         return send(url, 'POST', { params, data });
     }
-    function form(url, { params, data }) {
+    function form(url, options = {}) {
+        const params = options?.params ?? {};
+        const data = options?.data ?? {};
         return send(url, 'POST', { params, data: defineSendFormData(data) });
     }
 
