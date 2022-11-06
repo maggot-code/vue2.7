@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-11-03 09:58:03
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-06 23:51:13
+ * @LastEditTime: 2022-11-07 00:18:22
  * @Description: 
  */
 import Layout from "@/layout";
@@ -19,11 +19,11 @@ const routes = [
         path: "/login",
         component: () => import("@/pages/login/login.vue"),
     },
-    // {
-    //     name: "curd",
-    //     path: "/curd",
-    //     component: () => import("@/template/curd/view/curd.vue"),
-    // }
+    {
+        name: "curd",
+        path: "/curd",
+        component: () => import("@/template/curd/view/curd.vue"),
+    }
 ];
 
 const router = defineRouter(routes);
