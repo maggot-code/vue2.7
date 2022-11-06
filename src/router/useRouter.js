@@ -1,9 +1,9 @@
 /*
- * @FilePath: \vue2.7\src\router\useRouter.js
+ * @FilePath: /vue2.7/src/router/useRouter.js
  * @Author: maggot-code
  * @Date: 2022-11-03 09:58:03
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-04 12:08:25
+ * @LastEditTime: 2022-11-06 23:51:13
  * @Description: 
  */
 import Layout from "@/layout";
@@ -19,11 +19,11 @@ const routes = [
         path: "/login",
         component: () => import("@/pages/login/login.vue"),
     },
-    {
-        name: "curd",
-        path: "/curd",
-        component: () => import("@/template/curd/view/curd.vue"),
-    }
+    // {
+    //     name: "curd",
+    //     path: "/curd",
+    //     component: () => import("@/template/curd/view/curd.vue"),
+    // }
 ];
 
 const router = defineRouter(routes);
