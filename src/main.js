@@ -1,19 +1,22 @@
 /*
- * @FilePath: \vue2.7\src\main.js
+ * @FilePath: /vue2.7/src/main.js
  * @Author: maggot-code
  * @Date: 2022-10-31 11:39:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-03 12:30:20
+ * @LastEditTime: 2022-11-06 20:25:30
  * @Description: 
  */
 import Vue from 'vue';
 import router from "@/router/useRouter";
+import ElementUI from 'element-ui';
+// import { Loading } from 'element-ui';
 import { createPinia, PiniaVuePlugin } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
-import { Loading } from 'element-ui';
 
 import MaggotForm from "maggot-form/lib/maggot-form.umd";
 import MaggotTable from "maggot-table/lib/maggot-table.umd";
+// import MaggotForm from "maggot-form";
+// import MaggotTable from "maggot-table";
 import App from '@/App.vue';
 
 // server install
@@ -24,10 +27,11 @@ import "maggot-form/lib/maggot-form.css";
 import "maggot-table/lib/maggot-table.css";
 import '@/style/index.scss';
 
+Vue.use(ElementUI);
 Vue.use(MaggotForm);
 Vue.use(MaggotTable);
 Vue.use(PiniaVuePlugin);
-Vue.use(Loading.directive);
+// Vue.use(Loading.directive);
 
 const pinia = createPinia();
 
