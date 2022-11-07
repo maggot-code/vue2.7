@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/vite.config.js
+ * @FilePath: \vue2.7\vite.config.js
  * @Author: maggot-code
  * @Date: 2022-10-31 11:39:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-07 00:10:50
+ * @LastEditTime: 2022-11-07 09:23:02
  * @Description: 
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
@@ -74,7 +74,7 @@ export default defineConfig({
     server: {
         proxy: {
             "/vue": {
-                target: 'http://127.0.0.1:8080/',
+                target: 'http://192.1.1.176:8080/',
                 changeOrigin: true,
             },
             '/api': {
@@ -105,7 +105,7 @@ export default defineConfig({
         stringify: false,
     },
     build: {
-        minify: "terser",
+        minify: false,
         target: "es2015",
         sourcemap: 'hidden',
         chunkSizeWarningLimit: 500,
@@ -117,12 +117,12 @@ export default defineConfig({
         manifest: false,
         write: true,
         brotliSize: false,
-        terserOptions: {
-            compress: {
-                drop_console: true,
-                drop_debugger: true,
-            }
-        },
+        // terserOptions: {
+        //     compress: {
+        //         drop_console: true,
+        //         drop_debugger: true,
+        //     }
+        // },
         rollupOptions: {
             output: {
                 chunkFileNames: `assets/js/[name]-[hash].js`,
