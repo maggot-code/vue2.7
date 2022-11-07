@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-10-31 11:39:28
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-07 09:23:02
+ * @LastEditTime: 2022-11-07 09:39:32
  * @Description: 
  */
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
@@ -72,6 +72,9 @@ export default defineConfig({
         })
     ],
     server: {
+        hmr: {
+            overlay: true,
+        },
         proxy: {
             "/vue": {
                 target: 'http://192.1.1.176:8080/',

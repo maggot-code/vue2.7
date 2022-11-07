@@ -1,9 +1,9 @@
 /*
- * @FilePath: /vue2.7/src/router/useRouter.js
+ * @FilePath: \vue2.7\src\router\useRouter.js
  * @Author: maggot-code
  * @Date: 2022-11-03 09:58:03
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-11-07 00:18:22
+ * @LastEditTime: 2022-11-07 09:38:24
  * @Description: 
  */
 import Layout from "@/layout";
@@ -14,6 +14,11 @@ import { mergePage, usePage } from "./usePage";
 
 // const routes = mergePage(usePage(Pages), usePage(Layout));
 const routes = [
+    {
+        name: "debug",
+        path: "/debug",
+        component: () => import("@/layout/Debug/debug.vue"),
+    },
     {
         name: "login",
         path: "/login",
